@@ -17,8 +17,9 @@ syko.out: mem_abs.c f_add.c f_addi.c f_auipc.c f_bne.c f_jal.c f_jalr.c f_lui.c 
 	$(CC) $(CFLAGS) f_sw.c -o f_sw.o
 	#main
 	$(CC) $(CFLAGS) main.c -o main.o
-	$(CC) $(CFLAGS) mem_abs.o f_add.o f_addi.o f_auipc.o f_bne.o f_jal.o f_jalr.o f_lui.o f_sb.o f_sll.o f_slti.o f_sw.o main.o -o syko.out
-
+	$(CC)  mem_abs.o f_add.o f_addi.o f_auipc.o f_bne.o f_jal.o f_jalr.o f_lui.o f_sb.o f_sll.o f_slti.o f_sw.o main.o -o syko.out
+	#done
+	
 test: syko.out
 	syko.out
 
@@ -26,7 +27,7 @@ clean:
 	rm -f mem_abs.o
 	rm -f f_add.o
 	rm -f f_addi.o
-	rm -f df_auipc.o
+	rm -f f_auipc.o
 	rm -f f_bne.o
 	rm -f f_jal.o
 	rm -f f_jalr.o
@@ -36,4 +37,4 @@ clean:
 	rm -f f_slti.o
 	rm -f f_sw.o
 	rm -f main.o
-
+	#done
