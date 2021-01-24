@@ -15,10 +15,15 @@ void merror(int i, int j){
 
 int main(void){
     CodeType T;                         //zmienna pomocnicza
-    loadMEMC("test\\file_code.bin");          //ładowanie pamięci kodu z pliku 
-    loadMEMD("test\\file_data_in.bin");       //ładowanie pamięci danych z pliku
-    loadREGS("test\\file_reg_in.bin");        //ładowanie stanu rejestrów z pliku
-    setPC(0x00000000);                      //Warunki początkowe PC (RESET)
+    loadMEMC("file_code.bin");          //ładowanie pamięci kodu z pliku 
+    loadMEMD("file_data_in.bin");       //ładowanie pamięci danych z pliku
+    loadREGS("file_reg_in.bin");        //ładowanie stanu rejestrów z pliku
+    setPC(0x00000000);                     //Warunki początkowe PC (RESET)
+  
+    // T=getMEMC(getPC());
+    // printf("0x%04x", getPC());
+    // T = T & 0x0000007F;
+    // printf("0x%04x", T);
     for(;;){
         T=getMEMC(getPC());            //T=ID operacji i arg. wbudowanych
         switch(T & 0x0000007F){      //wyłuskanie właściwego kodu operacji OPCODE
@@ -46,7 +51,9 @@ int main(void){
             			F_SLL();
             			break;
             		case F3_ADD:
+            			printf("add\n");
             			F_ADD();
+
             			break;
             		case F3_SLTI:
             			F_SLTI();

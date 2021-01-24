@@ -128,3 +128,11 @@ int getFlagsRegister(int b){
         merror(INVALID_GET_OF_FLAGS_BIT, b);
     return FLAGS & (1<<b);
 }
+
+void writeOpcode(void){
+	CodeType T; 
+	T=getMEMC(getPC());
+    T = T & 0x0000007F;
+    printf("0x%04x\n", T);
+    incPC();
+}

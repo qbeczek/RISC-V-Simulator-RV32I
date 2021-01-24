@@ -4,6 +4,7 @@
 #include "mem_abs.h"
 
 void F_ADD(void){
+	writeOpcode();
 	DataType RS1=(getMEMC(getPC()) & 0xF8000) >>15;
 	DataType RS2=(getMEMC(getPC()) & 0x1F00000) >>20;
 

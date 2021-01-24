@@ -4,5 +4,5 @@
 #include "mem_abs.h"
 
 void F_LUI(void){
-	
+	 writeOpcode();
 }
