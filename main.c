@@ -8,22 +8,23 @@
 
 void merror(int i, int j){
     printf("ERROR code: 0x%08lx with arg. 0x%08lx at PC=0x%08lx\r\n", i, j, getPC());
-    saveMEMD("test\\file_data_out.bin");      //zapisz zawartość pamięci danych do pliku
-    saveREGS("test\\file_reg_out.bin");       //zapisz zawartość rejestrów i PC do pliku
+    saveMEMD("test/file_data_out.bin");      //zapisz zawartość pamięci danych do pliku
+    saveREGS("test/file_reg_out.bin");       //zapisz zawartość rejestrów i PC do pliku
     exit(-1);
 }
 
 int main(void){
     CodeType T;                         //zmienna pomocnicza
-    loadMEMC("file_code.bin");          //ładowanie pamięci kodu z pliku 
-    loadMEMD("file_data_in.bin");       //ładowanie pamięci danych z pliku
-    loadREGS("file_reg_in.bin");        //ładowanie stanu rejestrów z pliku
+    loadMEMC("test/file_code.bin");          //ładowanie pamięci kodu z pliku 
+    loadMEMD("test/file_data_in.bin");       //ładowanie pamięci danych z pliku
+    loadREGS("test/file_reg_in.bin");        //ładowanie stanu rejestrów z pliku
     setPC(0x00000000);                     //Warunki początkowe PC (RESET)
     // T=getMEMC(getPC());
     // T = T & 0x0000007F;
     // printf("0x%04x", T);
     for(;;){
         T=getMEMC(getPC());            //T=ID operacji i arg. wbudowanych
+        printf("0x%08x\n", T);
         switch(T & 0x7F){      //wyłuskanie właściwego kodu operacji OPCODE
             case OP_LUI:     
                 F_LUI();    
@@ -62,13 +63,13 @@ int main(void){
             			break;
             		default:
             			printf("Wykryto nieznana instrukcje (PC=0x%08lx, T=0x%08lx)\r\n", getPC(), T);
-                		saveMEMD("test\\file_data.bin");      //zapisz zawartość pamieci danych do pliku
-                		saveREGS("test\\file_reg_out.bin");   //zapisz zawartość rejestrów i PC do pliku 
+                		saveMEMD("test/file_data_out.bin");      //zapisz zawartość pamieci danych do pliku
+                		saveREGS("test/file_reg_out.bin");   //zapisz zawartość rejestrów i PC do pliku 
                 		return -1;
             		}
             	}
     }
-    saveMEMD("test\\file_data_out.bin");      //zapisz zawartość pamięci danych do pliku
-    saveREGS("test\\file_reg_out.bin");       //zapisz zawartość rejestrów i PC do pliku
+    saveMEMD("test/file_data_out.bin");      //zapisz zawartość pamięci danych do pliku
+    saveREGS("test/file_reg_out.bin");       //zapisz zawartość rejestrów i PC do pliku
     return 0;
 }

@@ -69,16 +69,16 @@ void saveREGS(char *file){        //zapisz zawartoœæ rejestrów i PC do pliku
         exit(-3);
     }    
     fseek(file_ptr, 0, SEEK_SET);
-    fwrite(REG, MAX_REGISTER+1, 1, file_ptr);
+    fwrite(REG, sizeof(DataType), MAX_REGISTER+1, file_ptr);
     fwrite(&PC, sizeof(AddressType), 1, file_ptr);
-    fwrite(&FLAGS, sizeof(DataType), 1, file_ptr);
+//    fwrite(&FLAGS, sizeof(DataType), 1, file_ptr);
     fclose(file_ptr);
 }
 
 CodeType getMEMC(AddressType p){
-    if(p>MAX_ADDRESS)               //Czy odwolanie nie siega poza pamiec kodu
+    if(p/4>MAX_ADDRESS)               //Czy odwolanie nie siega poza pamiec kodu
         merror(OUT_OF_CODE_MEMORY_SPACE_ERROR, p);
-    return MEMC[p];
+    return MEMC[p/4];
 }
 
 DataType getMEMD(AddressType p){
@@ -96,7 +96,7 @@ AddressType getPC(void){
 }
 
 void incPC(void){
-    PC++;
+    PC+=4;
 }
 
 DataType getRegister(int n){
@@ -134,5 +134,5 @@ void writeOpcode(void){
 	T=getMEMC(getPC());
     T = (T & 0x0000007F) + ((T & 0x000007000)>>4);
     printf("0x%04x\n", T);
-    incPC();
+   
 }
