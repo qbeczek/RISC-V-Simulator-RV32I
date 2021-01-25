@@ -132,7 +132,7 @@ int getFlagsRegister(int b){
 void writeOpcode(void){
 	CodeType T; 
 	T=getMEMC(getPC());
-    T = T & 0x0000007F;
+    T = (T & 0x0000007F) + ((T & 0x000007000)>>4);
     printf("0x%04x\n", T);
     incPC();
 }

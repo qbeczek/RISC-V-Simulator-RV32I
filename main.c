@@ -19,17 +19,16 @@ int main(void){
     loadMEMD("file_data_in.bin");       //ładowanie pamięci danych z pliku
     loadREGS("file_reg_in.bin");        //ładowanie stanu rejestrów z pliku
     setPC(0x00000000);                     //Warunki początkowe PC (RESET)
-  
     // T=getMEMC(getPC());
-    // printf("0x%04x", getPC());
     // T = T & 0x0000007F;
     // printf("0x%04x", T);
+
     for(;;){
         T=getMEMC(getPC());            //T=ID operacji i arg. wbudowanych
-        switch(T & 0x0000007F){      //wyłuskanie właściwego kodu operacji OPCODE
-            case OP_LUI:      
-                F_LUI();
-                break;
+        switch(T & 0x7F){      //wyłuskanie właściwego kodu operacji OPCODE
+            case OP_LUI:      //7 pierwszych bitów 111 1111
+                F_LUI();    //                1111 101 0111
+                break;      ///               0000 101 0111
             case OP_JAL:      
                 F_JAL();
                 break;
@@ -43,7 +42,7 @@ int main(void){
             	F_BNE();
             	break;
             default:
-            	switch((T & 0x0000007F) + ((T & 0x000007000)>>4)){ //wyłuskanie właściwego kodu operacji OPCODE + FUNCT3
+            	switch((T & 0x7F) + ((T & 0x7000)>>4)){ //wyłuskanie właściwego kodu operacji OPCODE + FUNCT3
             		case F3_SW:
             			F_SW();
             			break;
@@ -51,9 +50,7 @@ int main(void){
             			F_SLL();
             			break;
             		case F3_ADD:
-            			printf("add\n");
             			F_ADD();
-
             			break;
             		case F3_SLTI:
             			F_SLTI();
