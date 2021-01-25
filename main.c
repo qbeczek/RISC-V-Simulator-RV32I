@@ -22,13 +22,12 @@ int main(void){
     // T=getMEMC(getPC());
     // T = T & 0x0000007F;
     // printf("0x%04x", T);
-
     for(;;){
         T=getMEMC(getPC());            //T=ID operacji i arg. wbudowanych
         switch(T & 0x7F){      //wyłuskanie właściwego kodu operacji OPCODE
-            case OP_LUI:      //7 pierwszych bitów 111 1111
-                F_LUI();    //                1111 101 0111
-                break;      ///               0000 101 0111
+            case OP_LUI:     
+                F_LUI();    
+                break;     
             case OP_JAL:      
                 F_JAL();
                 break;
