@@ -13,7 +13,8 @@ void F_SLTI(void){
 	DataType RD=(getMEMC(getPC()) & 0xF80) >>7;
 
 	printf("0x%04x: SLTI R%d, R%d, R%d\n", getPC(), RD, RS1, IMM12);
-	if(RS1 > IMM12){
+	printf("0x%08x\n", RS1);
+	if(getRegister(RS1) > IMM12){
 		 setRegister(RD, 0x00000001);
 	}	else{
 		 setRegister(RD, 0x00000000);
