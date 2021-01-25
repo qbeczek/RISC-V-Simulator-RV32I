@@ -15,6 +15,7 @@ void F_ADDI(void)
 	// 5-bit
 	DataType RD=(getMEMC(getPC()) & 0xF80) >>7;
 
+	printf("0x%04x: ADD R%d, R%d, R%d\n", getPC(), RD, RS1, IMM12);
 	if(getRegister(RS1) + getRegister(IMM12) > MAX_DATA_VAL)
         setFlagsRegister(FLAG_C);
     else
