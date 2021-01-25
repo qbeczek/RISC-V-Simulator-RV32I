@@ -15,7 +15,6 @@ void F_ADDI(void)
 	DataType IMM12=(getMEMC(getPC()) & 0xFFF00000) >>20;
 	// 5-bit
 	
-
 	printf("0x%04x: ADDI R%d, R%d, R%d\n", getPC(), RD, RS1, IMM12);
         
     setRegister(RD, (getRegister(RS1) + IMM12));

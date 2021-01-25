@@ -71,7 +71,7 @@ void saveREGS(char *file){        //zapisz zawartoœæ rejestrów i PC do pliku
     fseek(file_ptr, 0, SEEK_SET);
     fwrite(REG, sizeof(DataType), MAX_REGISTER+1, file_ptr);
     fwrite(&PC, sizeof(AddressType), 1, file_ptr);
-//    fwrite(&FLAGS, sizeof(DataType), 1, file_ptr);
+//  fwrite(&FLAGS, sizeof(DataType), 1, file_ptr);
     fclose(file_ptr);
 }
 
