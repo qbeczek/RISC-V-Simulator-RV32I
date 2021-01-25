@@ -7,7 +7,7 @@ void F_SLL(void){
 	writeOpcode();
 	DataType RS1=(getMEMC(getPC()) & 0xF8000) >> 15;
 	DataType RS2=(getMEMC(getPC()) & 0x1F00000) >> 20;
-    DataType RD =(getMEMC(getPC()) & 0xF8) >> 7;
+    DataType RD =(getMEMC(getPC()) & 0xF80) >> 7;
 
 	printf("0x%04x: SLL R%d, R%d, R%d\n", getPC(), RD, RS1, RS2);
 
