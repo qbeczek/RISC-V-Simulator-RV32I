@@ -18,10 +18,11 @@ void F_SB(void)
 
 	DataType IMM12 = (IMM5 + IMM7);
 
-	// IMM12 jako offset
-	printf("0x%04x: SB R%d, R%d(R%d)\n", getPC(), RS1, IMM12, RS2);
-
     setRegister(RS1, (getRegister(RS2 + IMM12)));
     checkR0(RS1);
+	
+	// IMM12 jako offset
+	printf("0x%04x: SB R%d, IMM12%d(R%d)\n", getPC(), RS1, IMM12, RS2);
+	
     incPC();
 }

@@ -3,7 +3,8 @@
 #include "types.h"
 #include "mem_abs.h"
 
-void F_JALR(void){
+void F_JALR(void)
+{
 	writeOpcode();
 
 	// 5-bit; 7-11
@@ -12,10 +13,11 @@ void F_JALR(void){
 	DataType RS1 = getRS1();
 	// 12-bit; 20-31
 	DataType IMM12=(getMEMC(getPC()) & 0xFFF00000) >>20;
-	
-	printf("0x%04x: JALR R%d, R%d, R%d\n", getPC(), RD, RS1, IMM12);
-        
-    //TODO: implement function
-	checkR0(RD);
+    
+    setRegister(RD, getPC() + 4);
+    checkR0(RD);
+    setPC(IMM_WORD_ALIGNMENT(IMM20) + getRegister(RS1));
+
+	printf("0x%04x: JALR R%d, IMM12%d(R%d)\n", getPC(), RD, IMM12, RS1);
     incPC();
 }
