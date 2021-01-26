@@ -5,6 +5,7 @@
 
 void F_SB(void)
 {
+	writeOpcode();
 	// 5-bit; 15-19
 	DataType RS1=(getMEMC(getPC()) & 0x7C000) >>15;
 	// 5-bit; 20-24

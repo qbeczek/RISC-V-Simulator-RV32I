@@ -99,13 +99,13 @@ void incPC(void){
     PC+=4;
 }
 
-DataType getRegister(int n){
+DataType getRegister(DataType n){
     if(n>MAX_REGISTER)               //Czy odwolanie nie siega poza zdefiniowany zestaw rejestrow
         merror(INVALID_REGISTER_GET, n);
     return REG[n];
 }
 
-void setRegister(int n, DataType v){
+void setRegister(DataType n, DataType v){
     if(n>MAX_REGISTER)               //Czy odwolanie nie siega poza zdefiniowany zestaw rejestrow
         merror(INVALID_REGISTER_SET, n);
     REG[n]=v;

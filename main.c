@@ -24,7 +24,7 @@ int main(void){
     // printf("0x%04x", T);
     for(;;){
         T=getMEMC(getPC());            //T=ID operacji i arg. wbudowanych
-        printf("0x%08x\n", T);
+        printf("T: 0x%08x\n", T);
         switch(T & 0x7F){      //wyłuskanie właściwego kodu operacji OPCODE
             case OP_LUI:     
                 F_LUI();    
