@@ -19,5 +19,4 @@ void F_JALR(void)
     setPC(IMM_WORD_ALIGNMENT(IMM20) + getRegister(RS1));
 
 	printf("0x%04x: JALR R%d, IMM12%d(R%d)\n", getPC(), RD, IMM12, RS1);
-    incPC();
 }
