@@ -4,12 +4,10 @@
 #include "mem_abs.h"
 
 void F_SLTI(void){
-	writeOpcode();
-	// 5-bit
+	//writeOpcode();
+
 	DataType RS1 = getRS1();
-	// 12-bit
 	DataType IMM12=(getMEMC(getPC()) & 0xFFF00000) >>20;
-	// 5-bit
 	DataType RD = getRD();
 
 	printf("0x%04x: SLTI R%d, R%d, R%d\n", getPC(), RD, RS1, IMM12);

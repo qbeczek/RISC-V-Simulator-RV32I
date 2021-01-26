@@ -4,7 +4,7 @@
 #include "mem_abs.h"
 
 void F_SLL(void){
-	writeOpcode();
+//	writeOpcode();
 	DataType RS1 = getRS1();
 	DataType RS2 = getRS2();
     DataType RD = getRD();
