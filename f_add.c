@@ -12,6 +12,6 @@ void F_ADD(void){
 	printf("0x%04x: ADD R%d, R%d, R%d\n", getPC(), RD, RS1, RS2);
 
     setRegister(RD, (getRegister(RS1) + getRegister(RS2)));    //właściwe obliczenie
-
+    checkR0(RD);
     incPC();                                                //zwiększenie licznika rozkazów
 }

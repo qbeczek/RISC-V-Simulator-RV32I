@@ -142,6 +142,11 @@ DataType getRS2(void){
     return (getMEMC(getPC()) & 0x1F00000) >> 20;
 }
 
+void checkR0(DataType RD){
+	if(RD == 0){
+		setRegister(RD, 0);
+    } 
+}
 
 void writeOpcode(void){
 	CodeType T; 

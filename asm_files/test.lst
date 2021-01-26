@@ -7,13 +7,13 @@ start address 0x00000000
 
 Program Header:
     LOAD off    0x00000060 vaddr 0x00000000 paddr 0x00000000 align 2**4
-         filesz 0x00000034 memsz 0x00000034 flags r-x
+         filesz 0x00000024 memsz 0x00000024 flags r-x
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000034  00000000  00000000  00000060  2**4
+  0 .text         00000024  00000000  00000000  00000060  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .riscv.attributes 0000001a  00000000  00000000  00000094  2**0
+  1 .riscv.attributes 0000001a  00000000  00000000  00000084  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00000000 l    d  .text	00000000 .text
@@ -27,17 +27,13 @@ Disassembly of section .text:
 00000000 <_start>:
    0:	00100013          	li	zero,1
    4:	00100093          	li	ra,1
-   8:	00108113          	addi	sp,ra,1
-   c:	00110193          	addi	gp,sp,1
-  10:	00118213          	addi	tp,gp,1
-  14:	00120293          	addi	t0,tp,1 # 1 <_start+0x1>
-  18:	00128313          	addi	t1,t0,1
-  1c:	00130393          	addi	t2,t1,1
-  20:	00138413          	addi	s0,t2,1
-  24:	00140493          	addi	s1,s0,1
-  28:	00148513          	addi	a0,s1,1
-  2c:	00150593          	addi	a1,a0,1
-  30:	0000                	unimp
+   8:	00200113          	li	sp,2
+   c:	fff08193          	addi	gp,ra,-1
+  10:	ffb08213          	addi	tp,ra,-5
+  14:	00520293          	addi	t0,tp,5 # 5 <_start+0x5>
+  18:	7ff00313          	li	t1,2047
+  1c:	80000393          	li	t2,-2048
+  20:	0000                	unimp
 	...
 
 Disassembly of section .riscv.attributes:

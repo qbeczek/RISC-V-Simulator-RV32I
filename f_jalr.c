@@ -16,6 +16,6 @@ void F_JALR(void){
 	printf("0x%04x: JALR R%d, R%d, R%d\n", getPC(), RD, RS1, IMM12);
         
     //TODO: implement function
-
+	checkR0(RD);
     incPC();
 }

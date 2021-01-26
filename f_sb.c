@@ -22,6 +22,6 @@ void F_SB(void)
 	// zapisz w pamięci pod efektywny adres wartość 8 bitową – używaj młodszych bitów z rs2
 	// tu pewnie musze jeszcze przesunac o ten offset IMM12: IMM5 i IMM7 - moze getRegister(RS2 + IMM12)?
     setRegister(RS1, (getRegister(RS2))); //tutaj trzeba chyba dodac IMM Grajetny tutaj
-
+    checkR0(RS1);
     incPC();
 }

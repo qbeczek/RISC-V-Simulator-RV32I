@@ -11,5 +11,6 @@ void F_AUIPC(void){
 	printf("0x%04x: AUIPC R%d, R%d\n", getPC(), RD, IMM12);
         
     setRegister(RD, (getPC() + (IMM12 << 12)));
+    checkR0(RD);
     incPC();
 }

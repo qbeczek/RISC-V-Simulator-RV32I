@@ -25,6 +25,7 @@ DataType getRD(void);
 DataType getRS1(void);
 DataType getRS2(void);
 
+void checkR0(DataType RD);
 void writeOpcode(void);
 
 #endif //__MEM_ABS_H__

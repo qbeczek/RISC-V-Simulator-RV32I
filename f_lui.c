@@ -12,6 +12,7 @@ void F_LUI(void){
     printf("0x%04x: LUI R%d, R%d\n", getPC(), RD, IMM12);
     
     setRegister(RD, IMM12 << 12);
+    checkR0(RD);
     incPC();                                                //zwiększenie licznika rozkazów
     // jest git MG
     

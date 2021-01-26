@@ -19,5 +19,6 @@ void F_SLTI(void){
 	}	else{
 		 setRegister(RD, 0x00000000);
 	}
+	checkR0(RD);
 	incPC();
 }

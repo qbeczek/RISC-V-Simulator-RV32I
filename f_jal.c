@@ -25,11 +25,8 @@ void F_JAL(void){
     DataType IMM20 = ((getMEMC(getPC()) & 0x7FE00000) >> 21) + ((getMEMC(getPC()) & 0x100000) >> 10) + ((getMEMC(getPC()) & 0xFF000) >> 1) + ((getMEMC(getPC()) & 0x80000000) >> 12);
     
     setRegister(RD, getPC() + 4);
-    
+    checkR0(RD);
     setPC(IMM_WORD_ALIGNMENT(IMM20) + getPC());
-    
-    
-    
     printf("wynik JAL   RD%d    IMM20%d",RD ,IMM20 );
     
     
