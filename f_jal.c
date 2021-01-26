@@ -5,9 +5,9 @@
 
 int32_t IMM_WORD_ALIGNMENT(DataType BEFORE_WA){  //funkcja do rozszerzenia ze znakiem 
     
-    if(((BEFORE_WA & 0x80000) >> 19) = 1) //jeśli najstarszy bit z 20 bitowego wyrazenia IMM jest jedynka to powiela jedynke, jesli jest zerem to powiela zero od 20 do 32 bitu
-        return 0xFFF00000 + BEFORE_WA; // 0xFFF00000 to 12 jedynek i 20 zer + BEFORE_WA - to wartosci pierwszych 20 bitow
-    else return BEFORE_WA;
+    // if(((BEFORE_WA & 0x80000) >> 19) = 1) //jeśli najstarszy bit z 20 bitowego wyrazenia IMM jest jedynka to powiela jedynke, jesli jest zerem to powiela zero od 20 do 32 bitu
+    //     return 0xFFF00000 + BEFORE_WA; // 0xFFF00000 to 12 jedynek i 20 zer + BEFORE_WA - to wartosci pierwszych 20 bitow
+    // else return BEFORE_WA;
         
 }
 
