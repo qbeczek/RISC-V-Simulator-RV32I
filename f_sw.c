@@ -12,7 +12,9 @@ void F_SW(void){
     
     printf("0x%04x: SW R%d, R%d, R%d\n", getPC(), RS1, RS2, IMM17);
     
-    // tu robie dalej MG
+    // tu robie dalej MG!!!!
+    
+    incPC();                                                //zwiększenie licznika rozkazów
     
 }
 

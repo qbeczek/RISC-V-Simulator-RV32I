@@ -5,4 +5,7 @@
 
 void F_BNE(void){
 	writeOpcode();
+    
+    
+    incPC();                                                //zwiększenie licznika rozkazów
 }
