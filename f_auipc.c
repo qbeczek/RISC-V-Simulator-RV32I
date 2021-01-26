@@ -4,7 +4,7 @@
 #include "mem_abs.h"
 
 void F_AUIPC(void){
-	writeOpcode();
+	//writeOpcode();
 	DataType RD = getRD();
 	DataType IMM12=(getMEMC(getPC()) & 0xFFFFF000) >>12;
 
