@@ -17,8 +17,8 @@ void F_SB(void)
 	// setRegister(RS1, (getRegister(RS2 + (int8_t)IMM12)));
 	// checkR0(RS1);
 
-	setMEMD(getRegister(RS1), getRegister((int8_t)IMM12 + (RS2)));
+	setRegister(RS1, getRegister((int8_t)IMM12 + (RS2)));
 	// IMM12 jako offset - adres RS2+IMM
-	printf("0x%04x: SB R%d, IMM12%d(R%d)\n", getMEMD(), RS1, IMM12, RS2);
+	printf("0x%04x: SB R%d, IMM12%d(R%d)\n", getPC(), RS1, IMM12, RS2);
     incPC();
 }

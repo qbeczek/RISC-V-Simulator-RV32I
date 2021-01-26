@@ -4,12 +4,12 @@
 #include "mem_abs.h"
 
 
-DataType IMM_WORD_ALIGNMENT(DataType BEFORE_WA){  //funkcja do rozszerzenia ze znakiem
+DataType IMM_WORD_ALIGNMENT_BNE(DataType BEFORE_WA){  //funkcja do rozszerzenia ze znakiem
 
  if(((BEFORE_WA & 0x1000) >> 12) == 1) //jeli najstarszy bit z 13 bitowego wyrazenia IMM jest jedynka to powiela jedynke, jesli jest zerem to powiela zero od 13 do 31 bitu
      return 0xFFFFE000 + BEFORE_WA; // 0xFFFFE000 to 19 jedynek i 13 zer + BEFORE_WA - to wartosci pierwszych 13 bitow
  else return BEFORE_WA;
-
+}
     
 void F_BNE(void){
 	writeOpcode();
@@ -26,9 +26,8 @@ void F_BNE(void){
     //DataType IMM_B_type_12 =((getMEMC(getPC()) & 0x80000000) >> 19 );
     
     if (getRegister(RS1) != getRegister(RS2)){
-        setPC(IMM_WORD_ALIGNMENT(IMM_B_type) + getPC());
-    }
-    else {
+        setPC(IMM_WORD_ALIGNMENT_BNE(IMM_B_type) + getPC());
+    } else {
         incPC();                                                //zwiększenie licznika rozkazów
     }
 

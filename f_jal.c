@@ -3,7 +3,7 @@
 #include "types.h"
 #include "mem_abs.h"
 
-DataType IMM_WORD_ALIGNMENT(DataType BEFORE_WA){  //funkcja do rozszerzenia ze znakiem 
+DataType IMM_WORD_ALIGNMENT_jal(DataType BEFORE_WA){  //funkcja do rozszerzenia ze znakiem 
     
      if(((BEFORE_WA & 0x80000) >> 19) == 1) //jeli najstarszy bit z 20 bitowego wyrazenia IMM jest jedynka to powiela jedynke, jesli jest zerem to powiela zero od 20 do 32 bitu
          return 0xFFF00000 + BEFORE_WA; // 0xFFF00000 to 12 jedynek i 20 zer + BEFORE_WA - to wartosci pierwszych 20 bitow
@@ -28,7 +28,7 @@ void F_JAL(void){
     
     setRegister(RD, getPC() + 4);
     checkR0(RD);
-    setPC(IMM_WORD_ALIGNMENT(IMM20) + getPC());
+    setPC(IMM_WORD_ALIGNMENT_jal(IMM20) + getPC());
     printf("wynik JAL   RD%d    IMM20%d",RD ,IMM20 );
     
     
