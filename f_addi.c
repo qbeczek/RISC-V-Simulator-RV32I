@@ -8,7 +8,7 @@ void F_ADDI(void)
 	// tyle jedynek, jaka jest dl. zmiennej
 	// przesuniecie bitowe >>20 bo pierwszy bit na 20-tym miejscu
 
-	writeOpcode();
+	//writeOpcode();
 	DataType RD = getRD();
 	DataType RS1 = getRS1();
 	DataType IMM12=(getMEMC(getPC()) & 0xFFF00000) >>20;
