@@ -9,8 +9,8 @@ void F_ADDI(void)
 	// przesuniecie bitowe >>20 bo pierwszy bit na 20-tym miejscu
 	writeOpcode();
 	// 5-bit
-	DataType RD=(getMEMC(getPC()) & 0xF80) >>7;
-	DataType RS1=(getMEMC(getPC()) & 0xF8000) >>15;
+	DataType RD = getRD();
+	DataType RS1 = getRS1();
 	// 12-bit
 	DataType IMM12=(getMEMC(getPC()) & 0xFFF00000) >>20;
 	// 5-bit

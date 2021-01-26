@@ -21,6 +21,10 @@ void setFlagsRegister(int b);
 void resetFlagsRegister(int b);
 int getFlagsRegister(int b);
 
+DataType getRD(void);
+DataType getRS1(void);
+DataType getRS2(void);
+
 void writeOpcode(void);
 
 #endif //__MEM_ABS_H__

@@ -14,7 +14,7 @@ DataType IMM_WORD_ALIGNMENT(DataType BEFORE_WA){  //funkcja do rozszerzenia ze z
 void F_JAL(void){
 	writeOpcode();
     
-    DataType RD=(getMEMC(getPC()) & 0xF80) >>7;
+    DataType RD = getRD();
     
     //składowe IMM - juz przesuniete, jeszcze nie dodane
     //DataType IMM_10_1 =  (getMEMC(getPC()) & 0x7FE00000) >> 21;

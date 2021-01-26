@@ -129,6 +129,20 @@ int getFlagsRegister(int b){
     return FLAGS & (1<<b);
 }
 
+
+DataType getRD(void){
+   return (getMEMC(getPC()) & 0xF80) >> 7;
+}
+
+DataType getRS1(void){
+    return (getMEMC(getPC()) & 0xF8000) >>15;
+}
+
+DataType getRS2(void){
+    return (getMEMC(getPC()) & 0x1F00000) >> 20;
+}
+
+
 void writeOpcode(void){
 	CodeType T; 
 	T=getMEMC(getPC());
