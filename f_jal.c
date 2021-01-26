@@ -22,6 +22,8 @@ void F_JAL(void){
     //DataType IMM_19_12 =  (getMEMC(getPC()) & 0xFF000) >> 1;
     //DataType IMM_20_ =  (getMEMC(getPC()) & 0x80000000) >> 12;
     
+    
+    //do przesuniecia ze wzgledu na bit 0 rowny 0 AAAA
     DataType IMM20 = ((getMEMC(getPC()) & 0x7FE00000) >> 21) + ((getMEMC(getPC()) & 0x100000) >> 10) + ((getMEMC(getPC()) & 0xFF000) >> 1) + ((getMEMC(getPC()) & 0x80000000) >> 12);
     
     setRegister(RD, getPC() + 4);
@@ -30,6 +32,6 @@ void F_JAL(void){
     printf("wynik JAL   RD%d    IMM20%d",RD ,IMM20 );
     
     
-    
+    //poprawic bit 0 na 0 imm
     //tu robie dalej MG
 }
