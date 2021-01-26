@@ -19,9 +19,9 @@ I suggest to use:
 
 which is a shorthand for:
 
-Creating new branch:
+Creating new branch:  
 `git branch branch_name`
-...and switching to it:
+...and switching to it:  
 `git checkout branch_name`
 
 3. When you're done with changes
@@ -37,6 +37,6 @@ Then push your branch to our repo:
 
 4. Create PR and merge your branch to the `main` branch
 
-Go to GitHub -> Code -> branches
+Go to GitHub -> Code -> branches  
 Find your branch and `Create Pull Request`
 If there are no conflicts, click `Merge`
