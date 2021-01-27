@@ -5,7 +5,7 @@
 
 void F_SB(void)
 {
-//	writeOpcode();
+//git 	writeOpcode();
 	// 5-bit; 15-19
 	DataType RS1 = getRS1(); //stary zapis JonczykPRO (getMEMC(getPC()) & 0x7C000) >>15;
 	// 5-bit; 20-24
