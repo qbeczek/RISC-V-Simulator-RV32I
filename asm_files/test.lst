@@ -18,12 +18,6 @@ Idx Name          Size      VMA       LMA       File off  Algn
 SYMBOL TABLE:
 00000000 l    d  .text	00000000 .text
 00000000 l    d  .riscv.attributes	00000000 .riscv.attributes
-00000000 l    df *ABS*	00000000 jal.o
-00000010 l       .text	00000000 _funct2
-00000008 l       .text	00000000 _funct1
-00000028 l       .text	00000000 _funct5
-00000020 l       .text	00000000 _funct4
-00000018 l       .text	00000000 _funct3
 00000000 g       .text	00000000 _start
 
 
@@ -31,28 +25,19 @@ SYMBOL TABLE:
 Disassembly of section .text:
 
 00000000 <_start>:
-   0:	00000093          	li	ra,0
-   4:	00c005ef          	jal	a1,10 <_funct2>
-
-00000008 <_funct1>:
-   8:	00100113          	li	sp,1
-   c:	01c0066f          	jal	a2,28 <_funct5>
-
-00000010 <_funct2>:
-  10:	00200193          	li	gp,2
-  14:	00c006ef          	jal	a3,20 <_funct4>
-
-00000018 <_funct3>:
-  18:	00300213          	li	tp,3
-  1c:	fedff76f          	jal	a4,8 <_funct1>
-
-00000020 <_funct4>:
-  20:	00400293          	li	t0,4
-  24:	ff5ff7ef          	jal	a5,18 <_funct3>
-
-00000028 <_funct5>:
-  28:	00000013          	nop
-	...
+   0:	00100093          	li	ra,1
+   4:	00200113          	li	sp,2
+   8:	00300193          	li	gp,3
+   c:	00400213          	li	tp,4
+  10:	00102023          	sw	ra,0(zero) # 0 <_start>
+  14:	00012023          	sw	zero,0(sp)
+  18:	0011a223          	sw	ra,4(gp)
+  1c:	0022a0a3          	sw	sp,1(t0)
+  20:	00412e23          	sw	tp,28(sp)
+  24:	100002b7          	lui	t0,0x10000
+  28:	fff28293          	addi	t0,t0,-1 # fffffff <_start+0xfffffff>
+  2c:	0052a523          	sw	t0,10(t0)
+  30:	0031afa3          	sw	gp,31(gp)
 
 Disassembly of section .riscv.attributes:
 
@@ -61,7 +46,7 @@ Disassembly of section .riscv.attributes:
    2:	0000                	unimp
    4:	7200                	flw	fs0,32(a2)
    6:	7369                	lui	t1,0xffffa
-   8:	01007663          	bgeu	zero,a6,14 <_funct2+0x4>
+   8:	01007663          	bgeu	zero,a6,14 <_start+0x14>
    c:	0000000f          	fence	unknown,unknown
   10:	7205                	lui	tp,0xfffe1
   12:	3376                	fld	ft6,376(sp)
