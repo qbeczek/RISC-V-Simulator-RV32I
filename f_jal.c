@@ -11,20 +11,19 @@ DataType IMM_WORD_ALIGNMENT_jal(DataType BEFORE_WA){  //funkcja do rozszerzenia 
 }
 
 void F_JAL(void){
-	writeOpcode();
+	//writeOpcode();
     
     DataType RD = getRD();
-    
     //składowe IMM - bit zerowy IMM jest domniemany i zostawiamy tam wartosc 0
     //DataType IMM_10_1 =  (getMEMC(getPC()) & 0x7FE00000) >> 20;
     //DataType IMM_11_ =  (getMEMC(getPC()) & 0x100000) >> 9;
     //DataType IMM_19_12 =  (getMEMC(getPC()) & 0xFF000);
     //DataType IMM_20_ =  (getMEMC(getPC()) & 0x80000000) >> 11;
-    
     DataType IMM20 = ((getMEMC(getPC()) & 0x7FE00000) >> 20) + ((getMEMC(getPC()) & 0x100000) >> 9) + (getMEMC(getPC()) & 0xFF000) + ((getMEMC(getPC()) & 0x80000000) >> 11);
-    
+    printf("wynik JAL   RD%d    IMM20%d",RD ,IMM20 );
+
     setRegister(RD, getPC() + 4);
     checkR0(RD);
+    
     setPC(IMM_WORD_ALIGNMENT_jal(IMM20) + getPC());
-    printf("wynik JAL   RD%d    IMM20%d",RD ,IMM20 );
 }
