@@ -7,7 +7,7 @@
 #include "opcodes.h" //wzorce i naglowki opcodow
 
 void merror(int i, int j){
-    printf("ERROR code: 0x%08lx with arg. 0x%08lx at PC=0x%08lx\r\n", i, j, getPC());
+    printf("ERROR code: 0x%08x with arg. 0x%08x at PC=0x%08x\r\n", i, j, getPC());
     saveMEMD("test/file_data_out.bin");      //zapisz zawartość pamięci danych do pliku
     saveREGS("test/file_reg_out.bin");       //zapisz zawartość rejestrów i PC do pliku
     exit(-1);
@@ -62,7 +62,7 @@ int main(void){
             			F_ADDI();
             			break;
             		default:
-            			printf("Wykryto nieznana instrukcje (PC=0x%08lx, T=0x%08lx)\r\n", getPC(), T);
+            			printf("Wykryto nieznana instrukcje (PC=0x%08x, T=0x%08x)\r\n", getPC(), T);
                 		saveMEMD("test/file_data_out.bin");      //zapisz zawartość pamieci danych do pliku
                 		saveREGS("test/file_reg_out.bin");   //zapisz zawartość rejestrów i PC do pliku 
                 		return -1;

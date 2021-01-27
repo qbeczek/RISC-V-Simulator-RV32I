@@ -1,5 +1,4 @@
-#ignore all .bin
-*.bin
+
 #ignore all .o
 *.o
 #ignore dir test
