@@ -12,7 +12,7 @@ DataType IMM_WORD_ALIGNMENT_BNE(DataType BEFORE_WA){  //funkcja do rozszerzenia 
 }
     
 void F_BNE(void){
-	writeOpcode();
+	//writeOpcode();
     
     DataType RS1 = getRS1();
     DataType RS2 = getRS2();
