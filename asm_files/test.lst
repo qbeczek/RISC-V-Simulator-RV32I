@@ -25,19 +25,20 @@ SYMBOL TABLE:
 Disassembly of section .text:
 
 00000000 <_start>:
-   0:	00100093          	li	ra,1
-   4:	00200113          	li	sp,2
-   8:	00300193          	li	gp,3
-   c:	00400213          	li	tp,4
-  10:	00102023          	sw	ra,0(zero) # 0 <_start>
-  14:	00012023          	sw	zero,0(sp)
-  18:	0011a223          	sw	ra,4(gp)
-  1c:	0022a0a3          	sw	sp,1(t0)
-  20:	00412e23          	sw	tp,28(sp)
-  24:	100002b7          	lui	t0,0x10000
-  28:	fff28293          	addi	t0,t0,-1 # fffffff <_start+0xfffffff>
-  2c:	0052a523          	sw	t0,10(t0)
-  30:	0031afa3          	sw	gp,31(gp)
+   0:	11100093          	li	ra,273
+   4:	22200113          	li	sp,546
+   8:	33300193          	li	gp,819
+   c:	44400213          	li	tp,1092
+  10:	000100a3          	sb	zero,1(sp)
+  14:	005080a3          	sb	t0,1(ra)
+  18:	00004537          	lui	a0,0x4
+  1c:	dab50513          	addi	a0,a0,-597 # 3dab <_start+0x3dab>
+  20:	00b50023          	sb	a1,0(a0)
+  24:	00a00023          	sb	a0,0(zero) # 0 <_start>
+  28:	01e081a3          	sb	t5,3(ra)
+  2c:	01f08523          	sb	t6,10(ra)
+  30:	0000                	unimp
+	...
 
 Disassembly of section .riscv.attributes:
 
